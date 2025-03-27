@@ -3,8 +3,9 @@ import SingleHabit from "./SingleHabit";
 import moment from "moment";
 
 function MonthlyHabit() {
-  let month = moment().format("MMMM YYYY");
-  let daysInMonth = moment().daysInMonth();
+  let dateToday = moment();
+  let monthYear = moment(dateToday).format("MMMM YYYY");
+  //console.log("DATE ", dateToday);
 
   let habits = [
     "Reading",
@@ -18,13 +19,13 @@ function MonthlyHabit() {
   return (
     <div className="px-5 py-10 lg:px-10 ">
       <h2 className="font-bold text-5xl font-heading text-center pb-5">
-        {month}
+        {monthYear}
       </h2>
 
       {habits.map((habit, idx) => (
         <SingleHabit
           habit={habit}
-          daysInMonth={daysInMonth}
+          dateISO={dateToday}
           key={`${habit}-${idx}`}
         />
       ))}
